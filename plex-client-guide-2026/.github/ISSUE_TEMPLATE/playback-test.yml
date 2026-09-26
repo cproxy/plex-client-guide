@@ -1,0 +1,56 @@
+name: Playback compatibility test
+description: Submit a reproducible Plex client playback result
+title: "[TEST] device - codec/HDR/audio"
+labels: ["compatibility-test"]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Exact playback device
+      placeholder: NVIDIA Shield TV Pro 2019
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Player/app and version
+      placeholder: Plex for Android TV 2026.18.0
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Plex Media Server version
+  - type: textarea
+    id: chain
+    attributes:
+      label: Display/audio chain
+      placeholder: Shield -> Denon X3800H -> LG C3
+    validations:
+      required: true
+  - type: textarea
+    id: media
+    attributes:
+      label: MediaInfo summary
+      description: Container, video codec/profile, HDR/DV profile and FEL/MEL, audio codec/channels, subtitle format.
+    validations:
+      required: true
+  - type: dropdown
+    id: plexmode
+    attributes:
+      label: Plex playback mode
+      options:
+        - Direct Play
+        - Direct Stream
+        - Audio transcode only
+        - Video transcode
+        - Playback failed
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed result
+      description: Include TV HDR/DV indication and AVR reported audio format.
+    validations:
+      required: true

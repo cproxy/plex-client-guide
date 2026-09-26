@@ -1,0 +1,13 @@
+client,player,4k_hevc,hdr10,hdr10_plus,dv_p5,dv_p7,dv_p7_fel,dv_p8,truehd,truehd_atmos,dts_hd_ma,dts_x,av1,pgs,ethernet,confidence,last_verified
+NVIDIA Shield TV Pro 2019,Plex Android TV,Yes,Yes,No,Yes,Yes,No,Yes,Passthrough,Passthrough,Passthrough,Passthrough,No,Yes/variable,Gigabit,High,2026-09-26
+Apple TV 4K 3rd gen,Plex tvOS,Yes,Yes,Yes,Yes,No,No,No,Converted/limited,No,Converted/limited,No,Unknown,Yes/current bug,Gigabit on Ethernet model,High,2026-09-26
+Apple TV 4K 3rd gen,Infuse,Yes,Yes,Yes,Yes,No,No,Yes,LPCM,LPCM-no-TrueHD-Atmos,LPCM,LPCM-no-DTS-X,Unknown,Yes,Gigabit on Ethernet model,High,2026-09-26
+Fire TV Stick 4K Max Gen 2,Plex Fire TV,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes/variable,Yes/variable,No/current issues,No,Yes,Yes/variable,Optional 100M adapter,Medium-high,2026-09-26
+Google TV Streamer 4K,Plex Android TV,Yes,Yes,Yes,Yes,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes/variable,Gigabit,Medium,2026-09-26
+Chromecast with Google TV 4K,Plex Android TV,Yes,Yes,Yes,Yes,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes/variable,Optional,Medium,2026-09-26
+onn. 4K Pro 2026,Plex Android TV,Yes,Yes,Unknown,Yes,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes/variable,Yes,Medium-low,2026-09-26
+Roku Ultra current,Plex Roku,Yes,Yes,Yes,Yes,Unknown,No/Unknown,Unknown,No,No,No,No/Unknown,Unknown,No,100M,Medium-high,2026-09-26
+Ugoos AM6B+,CoreELEC + PM4K,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Passthrough,Passthrough,Passthrough,Passthrough,Unknown,Yes,Gigabit,High,2026-09-26
+Zidoo Z9X Pro-class,PlexToZidoo/PM4K,Yes,Yes,Yes,Yes,Yes,No-full-FEL,Yes,Passthrough,Passthrough,Passthrough,Passthrough,Unknown,Yes,Gigabit,Medium-high,2026-09-26
+LG webOS recent,Plex webOS,Yes,Yes,Model-dependent,Model-dependent,Model-dependent,No,Model-dependent,Transcode,No,Model-dependent-mostly-no,No,Model-dependent,Yes-webOS4plus-UHD,Model-dependent,Medium,2026-09-26
+Samsung Tizen 2016+,Plex Tizen,Yes,Yes,Model-dependent,No,No,No,No,Transcode,No,No-recent-sets,No,Model-dependent,Variable,Model-dependent,Medium,2026-09-26
