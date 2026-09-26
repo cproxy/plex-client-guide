@@ -1,100 +1,88 @@
-# Plex Client Guide (2026)
+<h2 align="center">Plex Client Guide</h2>
+<p align="center">
+A current, evidence-based guide to Plex playback clients.<br>
+<sub>Hardware capability · app behavior · real-world playback</sub>
+</p>
 
-A community-maintained, evidence-first guide to Plex playback clients.
+<p align="center">
+<a href="docs/matrix.md">Compatibility matrix</a> ·
+<a href="docs/settings.md">Recommended settings</a> ·
+<a href="docs/current-known-issues.md">Known issues</a> ·
+<a href="CONTRIBUTING.md">Contribute</a>
+</p>
 
-**Last verified:** 2026-09-26
+> **Last verified:** September 26, 2026
 
-This project exists because older all-in-one Plex client guides have become stale or fragmented. The goal here is to keep three different questions separate:
+Plex clients are deceptively difficult to compare. A device can advertise Dolby Vision or Atmos yet still fail to Direct Play a particular Dolby Vision profile, lossless-audio track, or subtitle format. This project keeps **hardware support**, **player/app support**, and **tested behavior** separate.
 
-1. **What the hardware supports**
-2. **What the current Plex/player app supports**
-3. **What actually works in tested real-world playback**
+### At a glance
 
-That distinction matters. A device may advertise Dolby Vision or Dolby Atmos and still fail to Direct Play a specific profile, container, subtitle format, or lossless-audio combination in Plex.
+| Client | Dolby Vision | Lossless audio | PGS | Best fit |
+|---|---|---|---|---|
+| **Shield TV Pro 2019 + Plex** | P5 / P7 / P8¹ | TrueHD/Atmos + DTS-HD/X passthrough | Good | Native Plex + AVR |
+| **Apple TV 4K + Infuse** | P5 / P8 | TrueHD/DTS-HD → LPCM² | Excellent | Apple ecosystem |
+| **Fire TV 4K Max Gen 2 + Plex** | P5 / P7 / P8³ | TrueHD capable; DTS limited | Good | Low-cost 4K/DV |
+| **Ugoos AM6B+ + CoreELEC + PM4K** | P5 / P7 / P8 + **FEL** | TrueHD/Atmos + DTS-HD/X passthrough | Excellent | UHD remux / home theater |
+| **Zidoo + PlexToZidoo** | P5 / P7 / P8¹ | TrueHD/Atmos + DTS-HD/X passthrough | Excellent | Local remux playback |
+| **Roku Ultra + Plex** | DV supported | Limited | Burn-in often required | Simple streaming |
+| **LG webOS / Samsung Tizen** | Model-dependent / no DV on Samsung | Limited | Model-dependent | Convenience |
 
-## Quick matrix
+<sub>¹ Profile 7 output does not mean FEL is processed. ² Lossless channel audio is retained, but TrueHD Atmos/DTS:X object metadata is not. ³ Support can vary with Plex app version and current regressions.</sub>
 
-Legend: ✅ verified/strong evidence · ⚠️ partial, converted, model-dependent, or current bug · ❌ not supported · ? not adequately verified
+**[Open the full compatibility matrix →](docs/matrix.md)**
 
-| Client | 4K HEVC | HDR10 | HDR10+ | DV P5 | DV P7 | P7 FEL processing | DV P8 | TrueHD | TrueHD Atmos | DTS-HD MA | DTS:X | AV1 | PGS without video transcode | Notes |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| NVIDIA Shield TV Pro 2019 + Plex | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ passthrough | ✅ passthrough | ✅ passthrough | ✅ passthrough | ❌ | ✅/⚠️ | Strong native Plex client; current 2026 Android-TV player regressions noted below |
-| Apple TV 4K 3rd gen + Plex | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ⚠️ converted | ❌ | ⚠️ converted | ❌ | ? | ✅/⚠️ | Excellent UI/platform; not a bitstream-lossless home-theater endpoint |
-| Apple TV 4K 3rd gen + Infuse | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ as LPCM | ❌ (TrueHD Atmos metadata lost) | ✅ as LPCM | ❌ | ? | ✅ | Better local-file compatibility than native Plex on Apple TV |
-| Fire TV Stick 4K Max Gen 2 + Plex | ✅ | ✅ | ✅ | ✅ | ✅/⚠️ | ❌ | ✅ | ✅/⚠️ | ✅/⚠️ | ❌/⚠️ | ❌ | ✅ | ✅/⚠️ | Very capable for price; Plex 2026 DTS-HD issues reported |
-| Google TV Streamer 4K + Plex | ✅ | ✅ | ✅ | ✅ | ? | ? | ? | ? | ? | ? | ? | ? | ✅/⚠️ | Hardware advertises DV/Atmos, but lossless bitstream support is not officially documented |
-| Chromecast with Google TV 4K + Plex | ✅ | ✅ | ✅ | ✅ | ? | ? | ? | ? | ? | ? | ? | ? | ✅/⚠️ | Older/slower; 2026 Plex Android TV regressions reported |
-| onn. 4K Pro (2026) + Plex | ✅ | ✅ | ? | ✅ | ? | ? | ? | ? | ? | ? | ? | ? | ✅/⚠️ | Great value; current Plex behavior needs more controlled testing |
-| Roku Ultra (current) + Plex | ✅ | ✅ | ✅ | ✅ | ? | ❌/? | ? | ❌ | ❌ | ❌ | ❌/? | ? | ❌ | PGS generally forces burn-in/video transcode; not ideal for remux libraries |
-| Ugoos AM6B+ + CoreELEC + PM4K | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ passthrough | ✅ passthrough | ✅ passthrough | ✅ passthrough | ? | ✅ | Best-documented Plex-path option here for UHD-BD DV P7 FEL + lossless audio |
-| Zidoo Z9X Pro-class + PlexToZidoo/PM4K | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ generally BL+RPU, not full FEL processing | ✅ | ✅ | ✅ | ✅ | ✅ | ? | ✅ | Excellent local playback; Plex integration relies on external-player bridge |
-| LG webOS (recent 4K models) + Plex | ✅ | ✅ | model-dependent | model-dependent | model-dependent | ❌ | model-dependent | ❌/transcode | ❌ | model-dependent/mostly ❌ recent sets | ❌ | model-dependent | ✅ on webOS 4+ UHD | Convenient, but TV-model/firmware limitations dominate |
-| Samsung Tizen (2016+) + Plex | ✅ | ✅ | model-dependent | ❌ (Samsung does not support DV) | ❌ | ❌ | ❌ | ❌/transcode | ❌ | ❌ recent sets | ❌ | model-dependent; Plex profile may lag | ⚠️ | Good basic client; poor choice for DV/lossless-audio remux libraries |
+### Quick picks
 
-> **Important:** “DV P7 works” does **not** automatically mean the enhancement layer (FEL) is processed. The Shield and many media players can trigger Dolby Vision from Profile 7 while ignoring the FEL enhancement layer. Ugoos AM6B+ under CoreELEC is notable because FEL processing is supported.
+| Need | Good starting point |
+|---|---|
+| Native Plex with lossless bitstream audio | **NVIDIA Shield TV Pro 2019** |
+| Full UHD Blu-ray DV Profile 7 FEL + Atmos/DTS:X | **Ugoos AM6B+ + CoreELEC + PM4K** |
+| Apple TV with broad format compatibility | **Apple TV 4K + Infuse** |
+| Affordable HDR/Dolby Vision client | **Fire TV Stick 4K Max Gen 2** |
+| Built-in TV app with no extra box | **LG webOS / Samsung Tizen**, with more codec compromises |
 
-## Practical choices by requirement
-
-- **Native Plex + lossless bitstream audio:** NVIDIA Shield TV Pro 2019 remains the simplest well-tested option.
-- **Full UHD Blu-ray Dolby Vision P7 FEL + TrueHD Atmos/DTS:X:** Ugoos AM6B+ + CoreELEC + PM4K is the strongest documented combination in this guide.
-- **Apple ecosystem / polished UI:** Apple TV 4K + Infuse. TrueHD/DTS-HD can be decoded losslessly to LPCM, but TrueHD Atmos and DTS:X object metadata are not preserved.
-- **Low-cost HDR/DV endpoint:** Fire TV Stick 4K Max Gen 2 is unusually capable, but DTS-HD/DTS:X support is weak and current Plex releases have had audio/refresh-rate regressions.
-- **Built-in TV app:** convenient, but expect more audio transcoding and model-specific restrictions.
-
-## Recommended Plex baseline settings
+### Recommended Plex baseline
 
 For clients that expose these options:
 
-- **Local quality:** Original / Maximum
-- **Direct Play:** On
-- **Direct Stream:** On
-- **Force Direct Play:** Off by default; use only as a troubleshooting tool
-- **Audio passthrough:** HDMI / On when your playback chain supports it
-- **Refresh-rate switching:** On normally, **but see current Android TV/Fire TV regressions below**
-- **Resolution switching:** Optional. Leave off unless you specifically want the TV/projector to perform scaling.
-- **Subtitle burn-in:** Automatic is the safe default. Prefer SRT when you want to avoid subtitle-triggered video transcodes on limited clients.
+`Local Quality: Original/Maximum` · `Direct Play: On` · `Direct Stream: On` · `Force Direct Play: Off` · `Refresh Rate Switching: On*`
 
-## Current Plex player caveats (September 2026)
+Audio passthrough should be enabled when the client and AVR/soundbar support it. Leave subtitle burn-in on **Automatic** unless you have a specific reason to change it.
 
-The current production Android/iOS/Android TV/tvOS/Fire TV release is Plex **2026.18.0**, while **2026.19.0** is in beta as of this guide's verification date.
+\* See [current known issues](docs/current-known-issues.md) before troubleshooting Android TV / Fire TV refresh-rate or DTS behavior.
 
-Notable active/recent issues:
+<details>
+<summary><strong>Why Dolby Vision Profile 7 needs its own warning</strong></summary>
 
-- Android TV users reported **DTS audio going silent when refresh-rate or resolution switching was enabled**. Plex lists a fix in the 2026.19.0 beta.
-- Android TV users also reported **23.976/24 fps Dolby Vision failing to trigger refresh-rate switching**, including Shield, Chromecast with Google TV, Google TV Streamer, and onn. 4K Pro reports.
-- Fire TV users have reported **DTS-HD MA passthrough failures** in current 2026 builds even when playback is otherwise Direct Play.
-- The new Apple TV app has current PGS rendering regressions reported against HDR content.
+A player displaying Dolby Vision from a Profile 7 source does **not** prove it is processing the enhancement layer. Many devices use the base layer plus RPU metadata while ignoring FEL. This guide therefore tracks **DV P7 output** and **P7 FEL processing** separately.
 
-These are app-version bugs, not necessarily permanent hardware limitations. This repo therefore tracks **hardware capability** separately from **current Plex behavior**.
+</details>
 
-## Project layout
+<details>
+<summary><strong>How support claims are graded</strong></summary>
 
-- [`docs/matrix.md`](docs/matrix.md) — detailed matrix and definitions
-- [`docs/settings.md`](docs/settings.md) — baseline Plex configuration guidance
-- [`docs/current-known-issues.md`](docs/current-known-issues.md) — time-sensitive client regressions
-- [`docs/clients/`](docs/clients/) — per-client notes
-- [`data/clients.csv`](data/clients.csv) — machine-editable matrix
-- [`docs/methodology.md`](docs/methodology.md) — evidence/confidence rules
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to submit test results
+We prioritize manufacturer documentation, Plex documentation and release notes, active player projects, and repeatable playback tests. Ambiguous or model-dependent behavior is marked as such instead of being forced into a simple Yes/No value.
 
-## Primary sources
+See [Methodology](docs/methodology.md) and [Sources](SOURCES.md).
 
-This repo prioritizes manufacturer specifications, Plex documentation/release notes, active player projects, and reproducible community test matrices.
+</details>
 
-- Plex Android TV settings: https://support.plex.tv/articles/settings-android-tv/
-- Plex Apple TV settings: https://support.plex.tv/articles/settings-plex-for-apple-tv/
-- Plex Roku settings: https://support.plex.tv/articles/204275243-settings-plex-for-roku/
-- Plex smart-TV format support: https://support.plex.tv/articles/203810286-what-media-formats-are-supported/
-- Plex TV/mobile release notes: https://forums.plex.tv/t/plex-for-mobile-tvs-android-mobile-ios-android-tv-tvos-fire-tv/909610
-- NT-Lists Plex compatibility matrix: https://github.com/NT-Lists/Docs/blob/master/Plex-Compatibility-Matrix.md
-- PM4K/PlexMod: https://github.com/pannal/plex-for-kodi
-- CoreELEC: https://github.com/CoreELEC/CoreELEC
-- NVIDIA Shield: https://www.nvidia.com/en-us/shield/
-- Apple TV 4K specs: https://www.apple.com/apple-tv-4k/specs/
-- Google streaming-device specs: https://support.google.com/chromecast/answer/3046409
-- Roku Ultra specs: https://www.roku.com/en-us/products/players/roku-ultra
-- Amazon Fire TV device specs: https://developer.amazon.com/docs/device-specs/device-specifications-fire-tv-streaming-media-player.html
+### Client pages
 
-## License
+[Shield TV Pro](docs/clients/shield-tv-pro-2019.md) ·
+[Apple TV 4K](docs/clients/apple-tv-4k.md) ·
+[Fire TV 4K Max](docs/clients/fire-tv-4k-max-gen2.md) ·
+[Google TV](docs/clients/google-tv.md) ·
+[Roku Ultra](docs/clients/roku-ultra.md) ·
+[Ugoos AM6B+](docs/clients/ugoos-am6b-plus.md) ·
+[Zidoo](docs/clients/zidoo.md) ·
+[Smart TV apps](docs/clients/smart-tv-apps.md)
 
-Documentation is released under CC BY 4.0. See [`LICENSE`](LICENSE).
+### Project files
+
+- [`data/clients.csv`](data/clients.csv) — machine-readable compatibility data
+- [`docs/current-known-issues.md`](docs/current-known-issues.md) — app-version regressions and temporary bugs
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — test-report requirements and contribution workflow
+- [`.github/ISSUE_TEMPLATE/playback-test.yml`](.github/ISSUE_TEMPLATE/playback-test.yml) — structured playback-test submissions
+
+Documentation is released under [CC BY 4.0](LICENSE).
