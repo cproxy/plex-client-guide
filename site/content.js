@@ -1,6 +1,4 @@
 window.PLEX_GUIDE = {
-  requestPortalUrl: "",
-  requestPortalLabel: "Open media request page",
   categories: [
     {
       id: "tv",
@@ -30,19 +28,15 @@ window.PLEX_GUIDE = {
   defaultSettings: [
     {
       label: "Home or local quality",
-      value: "Choose Original or Maximum so Plex can send the full quality available on your home network."
+      value: "On your home network, choose Original or Maximum."
     },
     {
-      label: "Direct Play",
-      value: "Turn it On, or leave it on Auto if that is the only choice."
-    },
-    {
-      label: "Direct Stream",
-      value: "Turn it On or leave it on Auto when the setting is available."
+      label: "Direct Play and Direct Stream",
+      value: "Turn them On when available, or leave them on Auto."
     },
     {
       label: "Subtitles",
-      value: "Leave burn-in on Automatic. If a title transcodes, try a text subtitle such as SRT or turn subtitles off once to compare."
+      value: "Leave burn-in on Automatic. If a title transcodes, test with subtitles off or try a text subtitle such as SRT."
     }
   ],
   clients: [
@@ -289,36 +283,20 @@ window.PLEX_GUIDE = {
   ],
   sources: [
     {
-      label: "Plex: Direct Play and Direct Stream",
-      url: "https://support.plex.tv/articles/200250387-streaming-media-direct-play-and-direct-stream/"
-    },
-    {
-      label: "Plex: Direct Play, Direct Stream, and Transcoding overview",
+      label: "Plex: Streaming overview",
       url: "https://support.plex.tv/articles/200430303-streaming-overview/"
     },
     {
-      label: "Plex: Supported Plex apps and devices",
+      label: "Plex: Supported apps and devices",
       url: "https://support.plex.tv/articles/203082707-supported-plex-companion-apps/"
-    },
-    {
-      label: "Plex: Supported Smart TV models",
-      url: "https://support.plex.tv/articles/204080173-which-smart-tv-models-are-supported/"
     },
     {
       label: "Plex: Smart TV media formats",
       url: "https://support.plex.tv/articles/203810286-what-media-formats-are-supported/"
     },
     {
-      label: "Plex Web Player",
-      url: "https://support.plex.tv/articles/200392226-plex-web-app-player/"
-    },
-    {
-      label: "Plex Web Player settings",
+      label: "Plex: Plex Web Player settings",
       url: "https://support.plex.tv/articles/200289408-plex-web-app-settings/"
-    },
-    {
-      label: "Plex: Adding local subtitles",
-      url: "https://support.plex.tv/articles/200471133-adding-local-subtitles-to-your-media/"
     },
     {
       label: "Amazon: Fire OS overview",
@@ -327,14 +305,6 @@ window.PLEX_GUIDE = {
     {
       label: "Amazon: Identify Fire TV devices",
       url: "https://developer.amazon.com/docs/device-specs/identify-fire-tv-devices.html"
-    },
-    {
-      label: "Advanced compatibility matrix",
-      url: "https://github.com/cproxy/plex-client-guide/blob/main/plex-client-guide-2026/docs/matrix.md"
-    },
-    {
-      label: "Current known issues",
-      url: "https://github.com/cproxy/plex-client-guide/blob/main/plex-client-guide-2026/docs/current-known-issues.md"
     }
   ]
 };
