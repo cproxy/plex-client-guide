@@ -12,16 +12,16 @@ The detailed compatibility research remains in [plex-client-guide-2026](plex-cli
 
 ## Publish the site
 
-In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow at \`.github/workflows/deploy-guide.yml\` publishes the \`site/\` folder when it changes on \`main\`.
+In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow at **.github/workflows/deploy-guide.yml** publishes the **site/** folder when it changes on **main**.
 
 GitHub Pages is public for this public repository. The guide contains no server address or private account information.
 
 ## Update the guide
 
-- Edit \`site/content.js\` to update device descriptions, steps, support links, and the request portal URL.
-- Set \`requestPortalUrl\` in that file when the media request page is ready.
-- Edit \`site/index.html\` for page structure and \`site/styles.css\` for appearance.
-- Edit \`site/app.js\` only when the selector or page interactions need to change.
+- Edit **site/content.js** to update device descriptions, steps, support links, and the request portal URL.
+- Set **requestPortalUrl** in that file when the media request page is ready.
+- Edit **site/index.html** for page structure and **site/styles.css** for appearance.
+- Edit **site/app.js** only when the selector or page interactions need to change.
 
 The page uses plain HTML, CSS, JavaScript, and inline vector illustrations. It has no package install or build step.
 
