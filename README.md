@@ -12,7 +12,7 @@ The detailed compatibility research remains in [plex-client-guide-2026](plex-cli
 
 ## Publish the site
 
-In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow at **.github/workflows/deploy-guide.yml** publishes the **site/** folder when it changes on **main**.
+In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow at **.github/workflows/deploy-guide.yml** publishes the **site/** folder when it changes on **main**. After saving that setting, go to **Actions → Publish Plex Client Guide → Run workflow** for the first publish; future site changes publish automatically.
 
 GitHub Pages is public for this public repository. The guide contains no server address or private account information.
 
