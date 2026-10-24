@@ -11,8 +11,6 @@
   var deviceCards = document.getElementById("deviceCards");
   var deviceGuide = document.getElementById("deviceGuide");
   var supportLinks = document.getElementById("supportLinks");
-  var requestLink = document.getElementById("requestLink");
-  var requestPortalStatus = document.getElementById("requestPortalStatus");
   var activeCategory = null;
   var selectedClient = null;
 
@@ -203,29 +201,10 @@
     });
   }
 
-  function renderRequestLink() {
-    var portal = (guide.requestPortalUrl || "").trim();
-    if (/^https?:\/\/\S+$/i.test(portal)) {
-      requestLink.href = portal;
-      requestLink.textContent = guide.requestPortalLabel || "Open media request page";
-      var arrow = element("span", "", "↗");
-      arrow.setAttribute("aria-hidden", "true");
-      requestLink.appendChild(arrow);
-      requestLink.target = "_blank";
-      requestLink.rel = "noopener";
-      requestLink.hidden = false;
-      requestPortalStatus.hidden = true;
-    } else {
-      requestLink.hidden = true;
-      requestPortalStatus.hidden = false;
-    }
-  }
-
   categoryChoices.setAttribute("role", "group");
   renderCategories();
   renderDeviceChoices();
   renderSources();
-  renderRequestLink();
 
   searchInput.addEventListener("input", function () {
     if (searchInput.value.trim()) {
