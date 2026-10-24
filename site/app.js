@@ -33,7 +33,8 @@
   function icon(kind) {
     var wrapper = element("span", "category-icon");
     wrapper.setAttribute("aria-hidden", "true");
-    wrapper.innerHTML = iconMarkup[kind] || iconMarkup.tv;
+    var iconKind = kind === "fire-tv" || kind === "apple-tv" ? "streaming" : kind;
+    wrapper.innerHTML = iconMarkup[iconKind] || iconMarkup.tv;
     return wrapper;
   }
 
