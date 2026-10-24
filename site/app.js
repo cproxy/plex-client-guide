@@ -101,7 +101,9 @@
 
     var header = element("header", "guide-header");
     header.appendChild(element("p", "guide-label", "Selected device"));
-    header.appendChild(element("h3", "", client.name));
+    var title = element("h3", "", client.name);
+    title.id = "guideTitle";
+    header.appendChild(title);
     header.appendChild(element("p", "guide-platform", client.platform));
     header.appendChild(element("p", "guide-summary", client.summary));
 
