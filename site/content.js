@@ -15,10 +15,22 @@ window.PLEX_GUIDE = {
       description: "Choose Xbox or PlayStation."
     },
     {
+      id: "fire-tv",
+      title: "Fire TV",
+      shortTitle: "Fire TV",
+      description: "Fire TV Stick, Cube, and Fire TV televisions."
+    },
+    {
+      id: "apple-tv",
+      title: "Apple TV",
+      shortTitle: "Apple TV",
+      description: "Apple TV 4K and other supported Apple TV models."
+    },
+    {
       id: "streaming",
       title: "Streaming device",
       shortTitle: "Streamers",
-      description: "Apple TV, Roku, Fire TV, and Google TV."
+      description: "Roku players, Google TV, Chromecast, and NVIDIA Shield."
     },
     {
       id: "browser",
@@ -168,7 +180,7 @@ window.PLEX_GUIDE = {
     },
     {
       id: "apple-tv",
-      category: "streaming",
+      category: "apple-tv",
       name: "Apple TV",
       platform: "tvOS · Plex app",
       summary: "Use the Plex app on Apple TV 4K or another supported Apple TV.",
@@ -188,7 +200,7 @@ window.PLEX_GUIDE = {
     },
     {
       id: "fire-tv",
-      category: "streaming",
+      category: "fire-tv",
       name: "Amazon Fire TV",
       platform: "Fire TV Stick or Cube · Plex app",
       summary: "Use the Plex app on a Fire TV device connected to your screen.",
@@ -198,8 +210,8 @@ window.PLEX_GUIDE = {
         "Choose the shared server and browse the available libraries."
       ],
       notes: [
-        "Menus and format support vary by Fire TV model and app version.",
-        "If an audio track causes trouble, try another track before changing video quality."
+        "Fire TV is a separate app platform from Google or Android TV. Most models use Amazon's Android-based Fire OS; some newer models, including the Fire TV Stick 4K Select, use Vega OS.",
+        "Menus and format support vary by Fire TV model and app version. If an audio track causes trouble, try another track before changing video quality."
       ],
       tryIfTranscoding: [
         "Set Home or Local quality to Original or Maximum.",
@@ -300,6 +312,14 @@ window.PLEX_GUIDE = {
     {
       label: "Plex: Adding local subtitles",
       url: "https://support.plex.tv/articles/200471133-adding-local-subtitles-to-your-media/"
+    },
+    {
+      label: "Amazon: Fire OS overview",
+      url: "https://developer.amazon.com/docs/fire-tv/fire-os-overview.html"
+    },
+    {
+      label: "Amazon: Identify Fire TV devices",
+      url: "https://developer.amazon.com/docs/device-specs/identify-fire-tv-devices.html"
     },
     {
       label: "Advanced compatibility matrix",
