@@ -4,39 +4,27 @@ window.PLEX_GUIDE = {
   categories: [
     {
       id: "tv",
-      title: "Smart TV",
-      shortTitle: "TVs",
-      description: "Use the Plex app built into the TV."
-    },
-    {
-      id: "console",
-      title: "Game console",
-      shortTitle: "Consoles",
-      description: "Choose Xbox or PlayStation."
-    },
-    {
-      id: "fire-tv",
-      title: "Fire TV",
-      shortTitle: "Fire TV",
-      description: "Fire TV Stick, Cube, and Fire TV televisions."
-    },
-    {
-      id: "apple-tv",
-      title: "Apple TV",
-      shortTitle: "Apple TV",
-      description: "Apple TV 4K and other supported Apple TV models."
+      title: "Plex app on my TV",
+      shortTitle: "TV app",
+      description: "I use the Plex app built into the television."
     },
     {
       id: "streaming",
-      title: "Streaming device",
-      shortTitle: "Streamers",
-      description: "Roku players, Google TV, Chromecast, and NVIDIA Shield."
+      title: "Plex app on a streaming device",
+      shortTitle: "Streaming device",
+      description: "I use Apple TV, Fire TV Stick, Roku, or Google TV connected to my TV."
+    },
+    {
+      id: "console",
+      title: "Plex app on a game console",
+      shortTitle: "Game console",
+      description: "I use Plex on Xbox or a supported PlayStation."
     },
     {
       id: "browser",
-      title: "Web browser",
-      shortTitle: "Browser",
-      description: "Plex Web in Chrome, Edge, Firefox, or Safari."
+      title: "Plex in a web browser",
+      shortTitle: "Web browser",
+      description: "I watch on a computer using Chrome, Edge, Firefox, or Safari."
     }
   ],
   defaultSettings: [
@@ -119,6 +107,25 @@ window.PLEX_GUIDE = {
       ]
     },
     {
+      id: "fire-tv-tv",
+      category: "tv",
+      name: "Amazon Fire TV television",
+      platform: "Fire TV · built-in Plex app",
+      summary: "Use the Plex app on the Fire TV television itself.",
+      setup: [
+        "Open the TV's app store and install Plex, or launch it if it is already installed.",
+        "Open Plex and sign in. Follow any on-screen instructions to link your account.",
+        "Choose the shared Plex server and open a library."
+      ],
+      notes: [
+        "Choose this option when Plex is running directly on the Fire TV television. If you use a Fire TV Stick or Cube plugged into the TV, choose the streaming-device option."
+      ],
+      tryIfTranscoding: [
+        "Set Home or Local quality to Original or Maximum.",
+        "Try another audio track or subtitle option."
+      ]
+    },
+    {
       id: "google-tv",
       category: "tv",
       name: "Google TV or Android TV",
@@ -180,7 +187,7 @@ window.PLEX_GUIDE = {
     },
     {
       id: "apple-tv",
-      category: "apple-tv",
+      category: "streaming",
       name: "Apple TV",
       platform: "tvOS · Plex app",
       summary: "Use the Plex app on Apple TV 4K or another supported Apple TV.",
@@ -200,10 +207,10 @@ window.PLEX_GUIDE = {
     },
     {
       id: "fire-tv",
-      category: "fire-tv",
-      name: "Amazon Fire TV",
-      platform: "Fire TV Stick or Cube · Plex app",
-      summary: "Use the Plex app on a Fire TV device connected to your screen.",
+      category: "streaming",
+      name: "Amazon Fire TV Stick or Cube",
+      platform: "Fire TV streaming player · Plex app",
+      summary: "Use the Plex app on a Fire TV Stick or Cube connected to your screen.",
       setup: [
         "Find Plex in the Fire TV app store and install it.",
         "Open Plex and sign in or follow the linking instructions on screen.",
