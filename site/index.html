@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c35">
+  <meta name="description" content="A simple, visual guide to getting the best Plex playback on TVs, game consoles, streaming devices, and web browsers.">
+  <title>Plex Client Guide</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./content.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to guide</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Plex Client Guide home">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>Plex <b>Client Guide</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#devices">Choose a device</a>
+      <a href="#smooth-play">Smooth playback</a>
+      <a href="#requests">Request media</a>
+      <a href="#help">Help</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-light">A guide for everyone watching</p>
+        <h1>Make Plex play<br><em>smoothly.</em></h1>
+        <p class="hero-lede">Choose the screen you use. Get the right app, the key settings, and a few quick checks if a title buffers or transcodes.</p>
+        <div class="hero-actions">
+          <a class="button button-lime" href="#devices">Choose your device <span aria-hidden="true">↓</span></a>
+          <a class="text-link text-link-light" href="#requests">Request something for later <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hero-note"><span class="status-dot" aria-hidden="true"></span> The steps are short. You can always come back to this page.</p>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a television and media devices">
+        <svg class="living-room" viewBox="0 0 560 430" role="img" aria-labelledby="art-title art-desc">
+          <title id="art-title">A screen ready for Plex</title>
+          <desc id="art-desc">A television, streaming player, remote control, and plant in a cozy living room.</desc>
+          <circle cx="382" cy="100" r="86" fill="#d8ef8b" opacity=".95"/>
+          <path d="M0 337c76-20 143-24 224-6 89 21 183 14 336-11v110H0z" fill="#0c2925" opacity=".62"/>
+          <path d="M70 353h400c0 0-15-69-55-78H118c-32 8-48 78-48 78z" fill="#bd704f"/>
+          <rect x="85" y="78" width="338" height="208" rx="18" fill="#0d2423" stroke="#f7f5ee" stroke-width="8"/>
+          <rect x="100" y="93" width="308" height="178" rx="9" fill="#204a42"/>
+          <rect x="118" y="111" width="129" height="143" rx="6" fill="#3b7868"/>
+          <rect x="257" y="111" width="133" height="61" rx="6" fill="#77a68b"/>
+          <rect x="257" y="181" width="133" height="73" rx="6" fill="#d77c51"/>
+          <circle cx="181" cy="166" r="25" fill="#d8ef8b"/>
+          <path d="M174 152v28l23-14z" fill="#204a42"/>
+          <path d="M180 286v23M326 286v23M154 309h197" stroke="#f7f5ee" stroke-width="8" stroke-linecap="round"/>
+          <rect x="405" y="303" width="74" height="21" rx="10" fill="#d8ef8b"/>
+          <circle cx="441" cy="313.5" r="4" fill="#204a42"/>
+          <rect x="464" y="164" width="24" height="104" rx="12" fill="#e8d8b8" transform="rotate(12 464 164)"/>
+          <circle cx="469" cy="191" r="3" fill="#204a42"/>
+          <path d="M492 337c8-33 22-50 45-61M496 337c-1-34-10-57-28-76M501 338c19-17 35-25 52-27" stroke="#d8ef8b" stroke-width="8" stroke-linecap="round"/>
+          <path d="M480 338h73l-10 58h-54z" fill="#e8d8b8"/>
+          <path d="M60 395h431" stroke="#f7f5ee" stroke-width="3" opacity=".45"/>
+        </svg>
+        <span class="art-caption"><span class="caption-line"></span> Pick your player. Keep the picture.</span>
+      </div>
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+    </section>
+
+    <section class="section device-section" id="devices">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>What do you watch on?</h2>
+          <p class="section-lede">Choose a device family, then pick the app or platform that matches your screen.</p>
+        </div>
+        <label class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Search devices</span>
+          <input id="deviceSearch" type="search" placeholder="Search devices or apps" autocomplete="off">
+        </label>
+      </div>
+      <div id="categoryChoices" class="category-grid" aria-label="Device families"></div>
+      <p id="pickerHint" class="picker-hint">Choose a device family above to see the common options.</p>
+      <section id="deviceResults" class="device-results" hidden aria-labelledby="resultsTitle">
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">Choose your player</p>
+            <h3 id="resultsTitle">Devices</h3>
+          </div>
+          <p id="deviceCount" class="result-count"></p>
+        </div>
+        <div id="deviceCards" class="device-grid"></div>
+      </section>
+      <section id="deviceGuide" class="guide-panel" hidden aria-live="polite" aria-labelledby="guideTitle"></section>
+    </section>
+
+    <section class="section playback-section" id="smooth-play">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The quick setup</p>
+          <h2>Three settings to start with</h2>
+          <p class="section-lede">These give Plex room to send the original file when the player supports it, with automatic fallback when it does not.</p>
+        </div>
+        <div class="play-badge"><span class="play-badge-icon" aria-hidden="true">▶</span><span>Best quality<br>with fewer surprises</span></div>
+      </div>
+      <div class="quick-settings">
+        <article class="setting-card">
+          <span class="step-number">01</span>
+          <h3>Choose Original</h3>
+          <p>On your home network, set local or home streaming quality to <strong>Original</strong> or <strong>Maximum</strong>.</p>
+          <span class="setting-tag">Quality</span>
+        </article>
+        <article class="setting-card setting-card-featured">
+          <span class="step-number">02</span>
+          <h3>Allow Direct Play</h3>
+          <p>Turn <strong>Direct Play</strong> and <strong>Direct Stream</strong> on, or leave them on Auto if that is the available choice.</p>
+          <span class="setting-tag">Playback</span>
+        </article>
+        <article class="setting-card">
+          <span class="step-number">03</span>
+          <h3>Leave fallback ready</h3>
+          <p>Keep normal compatibility options enabled. Plex may need to adapt an audio track, subtitle, or video for a particular player.</p>
+          <span class="setting-tag">Compatibility</span>
+        </article>
+      </div>
+
+      <div class="playback-explainer">
+        <div class="explainer-copy">
+          <p class="eyebrow eyebrow-light">What Plex is doing</p>
+          <h3>Direct Play is the simplest path.</h3>
+          <p>The player receives the media as it is. Direct Stream changes the container around compatible video and audio, without re-encoding the picture. A Transcode adapts something the player cannot use as sent.</p>
+          <a class="text-link text-link-light" href="https://support.plex.tv/articles/200430303-streaming-overview/" target="_blank" rel="noopener">See Plex's playback overview <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="playback-labels" aria-label="Plex playback modes">
+          <div class="mode-row"><span class="mode-number">1</span><span><strong>Direct Play</strong><small>Original file reaches the player</small></span><b class="mode-check" aria-hidden="true">✓</b></div>
+          <div class="mode-row"><span class="mode-number">2</span><span><strong>Direct Stream</strong><small>Container changes; video stays as is</small></span><b class="mode-check" aria-hidden="true">✓</b></div>
+          <div class="mode-row"><span class="mode-number mode-number-warm">3</span><span><strong>Transcode</strong><small>Plex converts media for compatibility</small></span><b class="mode-check mode-check-warm" aria-hidden="true">↻</b></div>
+        </div>
+      </div>
+
+      <div class="quick-fixes">
+        <div>
+          <p class="eyebrow">If something transcodes</p>
+          <h3>Try the small checks first.</h3>
+          <p class="section-lede">A single title can behave differently because of its audio, subtitle, file format, or the app playing it.</p>
+        </div>
+        <ol class="fix-list">
+          <li><span>1</span><p>Check that local or home quality is Original or Maximum.</p></li>
+          <li><span>2</span><p>Try another audio track. Turn subtitles off once to compare, then try a text subtitle such as SRT.</p></li>
+          <li><span>3</span><p>Play the same title in another Plex app. Browser and TV apps may support different formats.</p></li>
+          <li><span>4</span><p>If you contact the server owner, include the device, Plex app, title, audio track, and subtitle choice.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="request-section" id="requests">
+      <div class="request-art" aria-hidden="true">
+        <div class="request-ticket"><span class="ticket-star">✦</span><span class="ticket-lines"><i></i><i></i><i></i></span></div>
+        <div class="request-spark request-spark-one"></div>
+        <div class="request-spark request-spark-two"></div>
+        <div class="request-plant"><span></span><span></span><span></span></div>
+      </div>
+      <div class="request-copy">
+        <p class="eyebrow eyebrow-light">Save it for movie night</p>
+        <h2>Request media<br><em>for later.</em></h2>
+        <p>Use the request page shared by your Plex server owner. Search for the exact movie or show, check the year, choose the season if it is a series, and submit the request.</p>
+        <div class="request-steps">
+          <div><b>01</b><span>Find the right title</span></div>
+          <div><b>02</b><span>Choose the movie or season</span></div>
+          <div><b>03</b><span>Submit and check its status</span></div>
+        </div>
+        <a id="requestLink" class="button button-lime" href="#" hidden>Open media request page <span aria-hidden="true">↗</span></a>
+        <p id="requestPortalStatus" class="request-status">The request page link is not connected here yet. Ask your Plex server owner for the request link.</p>
+        <p class="request-footnote">A request is added to the queue; it may take a while before the title appears in Plex. Check the request page for its status.</p>
+      </div>
+    </section>
+
+    <section class="section help-section" id="help">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">More help</p>
+          <h2>Need a deeper answer?</h2>
+          <p class="section-lede">Plex's player, TV, and format pages explain what each app supports. The project notes cover more specific devices and known issues.</p>
+        </div>
+      </div>
+      <div id="supportLinks" class="resource-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="#top"><span class="brand-mark" aria-hidden="true"><span></span></span><span>Plex <b>Client Guide</b></span></a>
+    <p>Simple settings. Better playback. Updated from Plex support references.</p>
+    <a class="back-top" href="#top">Back to top ↑</a>
+  </footer>
+</body>
+</html>
