@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173c35">
+  <meta name="theme-color" content="#06100b">
   <meta name="description" content="Choose your Plex player and get simple setup tips for smooth playback.">
   <title>Plex Playback Guide</title>
   <link rel="stylesheet" href="./styles.css">
@@ -15,22 +15,29 @@
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Plex Playback Guide home">
       <span class="brand-mark" aria-hidden="true"><span></span></span>
-      <span>Plex <b>Playback Guide</b></span>
+      <span>PLEX<b>://PLAYBACK</b></span>
     </a>
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="#devices">Choose your setup</a>
-      <a href="#playback">Playback tips</a>
+      <a href="#devices">[ SELECT PLAYER ]</a>
+      <a href="#playback">[ TROUBLESHOOT ]</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow eyebrow-light">Plex playback guide</p>
-        <h1>Set up Plex for<br><em>smooth playback.</em></h1>
-        <p class="hero-lede">Choose how you watch to get the setup steps and playback tips for your screen.</p>
-        <div class="hero-actions">
-          <a class="button button-lime" href="#devices">Choose your setup <span aria-hidden="true">↓</span></a>
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <span class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="terminal-title">PLAYBACK_GUIDE.EXE</span>
+          <span class="terminal-status"><span class="status-led" aria-hidden="true"></span> SYSTEM READY <span class="terminal-cursor" aria-hidden="true">█</span></span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-light"><span aria-hidden="true">&gt;</span> CONNECT YOUR PLEX PLAYER</p>
+          <h1>Make Plex play<br><em>smoothly.</em></h1>
+          <p class="hero-lede">Choose how you watch to get the setup steps and playback tips for your screen.</p>
+          <div class="hero-actions">
+            <a class="button button-lime" href="#devices"><span aria-hidden="true">&gt;</span> Choose your setup</a>
+          </div>
         </div>
       </div>
     </section>
@@ -38,18 +45,18 @@
     <section class="section device-section" id="devices">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Start here</p>
+          <p class="eyebrow"><span aria-hidden="true">01 //</span> SELECT YOUR CLIENT</p>
           <h2>How do you watch Plex?</h2>
           <p class="section-lede">Choose the app or screen you use, then select your device for its steps.</p>
         </div>
         <label class="search-box">
-          <span class="search-icon" aria-hidden="true">⌕</span>
+          <span class="search-icon" aria-hidden="true">&gt;_</span>
           <span class="visually-hidden">Search devices</span>
           <input id="deviceSearch" type="search" placeholder="Search devices" autocomplete="off">
         </label>
       </div>
       <div id="categoryChoices" class="category-grid" aria-label="Ways to watch Plex"></div>
-      <p id="pickerHint" class="picker-hint">Choose how you watch to see the matching Plex players.</p>
+      <p id="pickerHint" class="picker-hint"><span aria-hidden="true">[ WAITING ]</span> Choose how you watch to see the matching Plex players.</p>
       <section id="deviceResults" class="device-results" hidden aria-labelledby="resultsTitle">
         <div class="results-heading">
           <h3 id="resultsTitle">Devices</h3>
@@ -63,7 +70,7 @@
     <section class="section playback-section" id="playback">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Playback tips</p>
+          <p class="eyebrow"><span aria-hidden="true">02 //</span> PLAYBACK DIAGNOSTICS</p>
           <h2>If a title buffers or transcodes</h2>
           <p class="section-lede">Plex may need to adapt a video, audio track, or subtitle for your device. Try these quick checks.</p>
         </div>
@@ -73,15 +80,15 @@
         <li><strong>Check audio and subtitles.</strong> Try another audio track. Test once with subtitles off, or use a text subtitle such as SRT.</li>
         <li><strong>Compare players.</strong> Try the same title in another Plex app. If it still transcodes, tell the server owner your device, app, title, audio track, and subtitle choice.</li>
       </ol>
-      <p class="playback-note"><strong>Direct Play</strong> sends the file as it is. <strong>Direct Stream</strong> changes its container while keeping compatible video and audio intact. <strong>Transcode</strong> converts media for compatibility. <a href="https://support.plex.tv/articles/200430303-streaming-overview/" target="_blank" rel="noopener">Plex playback overview ↗</a></p>
+      <p class="playback-note"><strong>Direct Play</strong> sends the file as it is. <strong>Direct Stream</strong> changes its container while keeping compatible video and audio intact. <strong>Transcode</strong> converts media for compatibility. <a href="https://support.plex.tv/articles/200430303-streaming-overview/" target="_blank" rel="noopener">Plex playback overview &gt;&gt;</a></p>
     </section>
 
     <section class="section help-section" id="help">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Device compatibility</p>
-          <h2>More player details</h2>
-          <p class="section-lede">Official references for app availability, supported formats, and device settings.</p>
+          <p class="eyebrow"><span aria-hidden="true">03 //</span> REFERENCE FILES</p>
+          <h2>Player compatibility</h2>
+          <p class="section-lede">Official notes on Plex apps, formats, and device settings.</p>
         </div>
       </div>
       <div id="supportLinks" class="resource-grid"></div>
@@ -89,8 +96,9 @@
   </main>
 
   <footer class="site-footer">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span></span><span>Plex <b>Playback Guide</b></span></a>
-    <a class="back-top" href="#top">Back to top ↑</a>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span></span><span>PLEX<b>://PLAYBACK</b></span></a>
+    <span class="footer-status"><span class="status-led" aria-hidden="true"></span> END OF TRANSMISSION</span>
+    <a class="back-top" href="#top">[ TOP ]</a>
   </footer>
 </body>
 </html>
